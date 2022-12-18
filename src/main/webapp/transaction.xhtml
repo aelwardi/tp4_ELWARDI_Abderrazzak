@@ -16,14 +16,17 @@
             <h:inputText id="source" size="3" value="#{transfert.idSource}"
                          required="true" label='id du compte source'
                          converterMessage="L'id est un nombre entier"/>
+            <h:message for="source"/>
             Id destination : 
             <h:inputText id="destination" size="3" value="#{transfert.idDestination}"
                          required="true"
                          converterMessage="L'id est un nombre entier"/>
+            <h:message for="destination"/>
             Montant :
             <h:inputText id="montant" size="3" value="#{transfert.montant}"
                          required="true"
                          converterMessage="L'id est un nombre entier"/>
+            <h:message for="montant"/>
 
             <h:commandButton id="enregistrement" value="Enregistrer"
                              action="#{transfert.enregistrer()}" />
