@@ -1,6 +1,7 @@
 package ma.elwardi.tp4_elwardi_abderrazzak.ejb;
 
 import jakarta.annotation.sql.DataSourceDefinition;
+import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -26,6 +27,26 @@ public class GestionnaireCompte {
 
     @PersistenceContext(unitName = "banquePU")
     private EntityManager em;
+
+    public CompteBancaire findById(long id) {
+        return em.find(CompteBancaire.class, id);
+    }
+
+    public void transferer(CompteBancaire source, CompteBancaire destination,
+            int montant) {
+        try {
+            source.retirer(montant);
+            destination.deposer(montant);
+            update(source);
+            update(destination);
+        } catch (Exception ex) {
+            throw new EJBTransactionRolledbackException(ex.getLocalizedMessage(), ex);
+        }
+    }
+
+    public CompteBancaire update(CompteBancaire compteBancaire) {
+        return em.merge(compteBancaire);
+    }
 
     public long nbComptes() {
         TypedQuery<Long> query = em.createQuery("select count(c) from CompteBancaire as c", Long.class);

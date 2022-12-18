@@ -6,6 +6,12 @@ body {
     margin: 10px;
 }
 
+td {
+  border-width: 1px !important;
+}
+.ui-datatable {  display: table; }
+.ui-datatable table { table-layout: auto !important; }
+
 h1 {
     font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     border-bottom: 1px solid #AFAFAF; 
