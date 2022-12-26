@@ -6,7 +6,6 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.inject.Named;
 import jakarta.faces.bean.RequestScoped;
-import ma.elwardi.tp4_elwardi_abderrazzak.jsf.util.Util;
 
 /**
  * Backing bean pour la page transfert.xhtml.

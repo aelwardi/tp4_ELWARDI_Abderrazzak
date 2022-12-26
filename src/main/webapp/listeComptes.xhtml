@@ -45,7 +45,25 @@
                                     <f:convertNumber pattern="###,###,##0"/>
                                 </h:outputText>
                             </p:column>
+                            <p:column>
+                                <p:commandLink action="#{listeComptes.supprimerCompte(item)}" 
+                                               title="Supprimer ce compte">
+                                    <h:graphicImage name="images/del.png" />
+                                    <p:confirm header="Confirmation de suppression"
+                                               message="Voulez-vous vraiment supprimer ?" />
+                                </p:commandLink>
+                                <br/>
+                                <h:link title="Modifier le nom #{item.nom}"
+                                        value="Modifier le nom"
+                                        outcome="modifierNom?id=#{item.id}"  />
+                            </p:column>
                         </p:dataTable>
+                        <p:confirmDialog global="true">
+                            <p:commandButton value="Oui" type="button" 
+                                             styleClass="ui-confirmdialog-yes"/>
+                            <p:commandButton value="Non" type="button" 
+                                             styleClass="ui-confirmdialog-no"/>
+                        </p:confirmDialog>
                     </h:form>
                     <h:messages/>
                 </f:view>

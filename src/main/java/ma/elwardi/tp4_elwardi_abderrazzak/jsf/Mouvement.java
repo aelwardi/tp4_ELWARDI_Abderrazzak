@@ -12,7 +12,6 @@ import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
 import ma.elwardi.tp4_elwardi_abderrazzak.ejb.GestionnaireCompte;
 import ma.elwardi.tp4_elwardi_abderrazzak.entities.CompteBancaire;
-import ma.elwardi.tp4_elwardi_abderrazzak.jsf.util.Util;
 
 /**
  *
