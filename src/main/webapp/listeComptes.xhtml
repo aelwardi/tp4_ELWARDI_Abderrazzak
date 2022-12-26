@@ -9,10 +9,7 @@
     <body>
 
         <ui:composition template="./WEB-INF/templates/template_defaut.xhtml">
-
-            <ui:define name="top">
-                Liste des comptes
-            </ui:define>
+            <ui:param name='titre' value='Liste de tous les comptes'/>
 
             <ui:define name="content">
                 <f:view>
@@ -23,19 +20,24 @@
                                      rowsPerPageTemplate="2,4,8,10"
                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      >
-                            <p:column width="40">
+                            <p:column width="40" style="border-width: 1px;"
+                                      sortBy="#{item.id}">
                                 <f:facet name="header">
                                     <h:outputText value="Id"/>
                                 </f:facet>
-                                <h:outputText value="#{item.id}"/>
+                                <h:link value="#{item.id}" outcome="mouvement?id=#{item.id}"/>
                             </p:column>
-                            <p:column  width="200">
+                            <p:column  width="200" sortBy="#{item.nom}" 
+                                       filterBy="#{item.nom}">
                                 <f:facet name="header">
                                     <h:outputText value="Nom"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nom}"/>
                             </p:column>
-                            <p:column style="text-align:right;" width="60">
+                            <p:column style="text-align:right;" width="60"
+                                      sortBy="#{item.solde}"
+                                      filterBy="#{item.solde}"
+                                      filterFunction="#{listeComptes.filterBySolde}">
                                 <f:facet name="header">
                                     <h:outputText value="Solde"/>
                                 </f:facet>

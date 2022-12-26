@@ -61,4 +61,18 @@ public class GestionnaireCompte {
     public void creerCompte(CompteBancaire compteBancaire) {
         em.persist(compteBancaire);
     }
+
+    public void deposer(CompteBancaire compteBancaire, int montant) {
+        compteBancaire.deposer(montant);
+        update(compteBancaire);
+    }
+
+    public void retirer(CompteBancaire compteBancaire, int montant) {
+        try {
+            compteBancaire.retirer(montant);
+            update(compteBancaire);
+        } catch (Exception ex) {
+            throw new EJBTransactionRolledbackException(ex.getLocalizedMessage(), ex);
+        }
+    }
 }
